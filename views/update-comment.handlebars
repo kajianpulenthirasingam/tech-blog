@@ -1,0 +1,26 @@
+<div
+  class="col-12 col-md-8 m-auto align-center mt-5 border border-black rounded-4"
+>
+  <div class="d-flex justify-content-between bg-info m-0 p-2 rounded-top-4">
+    <h2>{{comment.title}}</h2>
+    <h5>Post created by:
+      {{comment.user.username}}
+      on
+      {{format_date comment.createdAt}}</h5>
+  </div>
+  <form class="d-flex flex-column p-3">
+    <label class="m-2"> Content </label>
+    <textarea
+      id="update-comment"
+      class="m-2"
+      rows="5"
+    >{{comment.content}}</textarea>
+    <button
+      id="submit-update-comment-btn"
+      data-id="{{comment.id}}"
+      class="btn btn-primary m-2 align-self-center"
+      type="submit"
+    >Update Comment</button>
+  </form>
+</div>
+<script src="/js/update-comment.js"></script>

@@ -1,0 +1,65 @@
+<div
+  class="col-12 col-md-8 m-auto align-center mt-5 border border-black rounded-4"
+>
+  <div class="d-flex justify-content-between bg-info m-0 p-2 rounded-top-4">
+    <h2>{{blogpost.title}}</h2>
+    <h5>Post created by:
+      {{blogpost.user.username}}
+      on
+      {{format_date blogpost.createdAt}}</h5>
+  </div>
+  <p class="text-center p-3 m-0">{{blogpost.content}}</p>
+</div>
+
+{{#each blogpost.comments as |comment|}}
+  <div
+    class="col-12 col-md-7 m-auto my-2 align-center border border-black rounded-4"
+  >
+    <div class="d-flex justify-content-end m-0 p-2 bg-warning rounded-top-4">
+      <h5>Comment created by:
+        {{comment.user.username}}
+        on
+        {{format_date comment.createdAt}}</h5>
+    </div>
+    <p class="text-center p-3 m-0">{{comment.content}}</p>
+    {{#if (eq @root.username.username comment.user.username)}}
+      <div class="d-flex justify-content-center">
+        <a
+          href="/update-comment/{{comment.id}}"
+          class="btn btn-primary m-2"
+          type="submit"
+        >Edit</a>
+        <button
+          class="btn btn-danger m-2 delete-comment-btn"
+          data-id="{{comment.id}}"
+          type="submit"
+        >Delete</button>
+      </div>
+    {{/if}}
+  </div>
+{{/each}}
+
+{{#if logged_in}}
+  <div class="col-12 col-md-8 m-auto mt-5">
+    <h2 class="text-center border border-black bg-info m-0 p-2">Add Comment</h2>
+    <div>
+      <form class="d-flex flex-column border border-black p-3">
+        <label class="m-2"> Content </label>
+        <textarea id="new-comment" class="m-2" rows="5"></textarea>
+        <button
+          id="submit-new-comment-btn"
+          data-id="{{blogpost.id}}"
+          class="btn btn-primary m-2"
+          type="submit"
+        >Add Comment</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/comment.js"></script>
+{{else}}
+  <div class="d-flex m-auto mt-5">
+    <p class="d-flex flex-column border border-black p-3 text-center">
+      <a href="/login">Login</a>
+      before you can leave a comment</p>
+  </div>
+{{/if}}

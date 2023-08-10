@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+  <a
+    href="/create-post"
+    id="create-post-btn"
+    class="btn btn-primary m-2"
+    type="submit"
+  >+ New Post</a>
+</div>
+
+{{#each blogposts as |post|}}
+  <div
+    data-id="{{post.id}}"
+    class="col-12 col-md-8 m-auto mt-5 border border-black rounded-4"
+    role="button"
+  >
+    <div
+      class="d-flex justify-content-between bg-info m-0 p-2 rounded-4 open-post-btn"
+      data-id="{{post.id}}"
+      role="button"
+    >
+      <h2 data-id="{{post.id}}" role="button">{{post.title}}</h2>
+      <h5 data-id="{{post.id}}" role="button">{{format_date
+          post.createdAt
+        }}</h5>
+    </div>
+  </div>
+{{/each}}
+
+<script src="/js/dashboard.js"></script>
