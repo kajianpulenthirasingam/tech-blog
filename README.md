@@ -2,7 +2,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ## Description
-
+Making a blog post website where people can signup and login to view other peopls posts and comments. You can even create your own blogpost for everyone to see.
 
 ## Table of Contents
 1. [Installation](#installation)
